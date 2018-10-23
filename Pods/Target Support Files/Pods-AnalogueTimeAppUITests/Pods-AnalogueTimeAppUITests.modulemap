@@ -1,0 +1,6 @@
+framework module Pods_AnalogueTimeAppUITests {
+  umbrella header "Pods-AnalogueTimeAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Winner View Controller-->
+        <scene sceneID="mJh-ak-7bn">
+            <objects>
+                <viewController storyboardIdentifier="WinnerViewController" id="ES9-dG-FIJ" customClass="WinnerViewController" customModule="AnalougeAp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zcj-mL-AOS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugj-lQ-asF">
+                                <rect key="frame" x="20" y="315.5" width="335" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ZyX-sa-bR6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hs3-DA-aaw" userLabel="congratulationImageview">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFh-Zb-6P9">
+                                <rect key="frame" x="315" y="60" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CMl-Zi-asl"/>
+                                    <constraint firstAttribute="width" constant="50" id="d8N-ek-W2a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="ES9-dG-FIJ" eventType="touchUpInside" id="upO-wZ-hru"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KDT-cV-eXp" firstAttribute="trailing" secondItem="jFh-Zb-6P9" secondAttribute="trailing" constant="10" id="0Ww-p3-DbX"/>
+                            <constraint firstItem="jFh-Zb-6P9" firstAttribute="top" secondItem="zcj-mL-AOS" secondAttribute="top" constant="60" id="10Q-Bj-rJO"/>
+                            <constraint firstItem="hs3-DA-aaw" firstAttribute="top" secondItem="KDT-cV-eXp" secondAttribute="top" id="CNJ-bO-4ed"/>
+                            <constraint firstItem="hs3-DA-aaw" firstAttribute="trailing" secondItem="KDT-cV-eXp" secondAttribute="trailing" id="Fga-gG-cFR"/>
+                            <constraint firstItem="ugj-lQ-asF" firstAttribute="centerX" secondItem="KDT-cV-eXp" secondAttribute="centerX" id="IBx-lh-LW5"/>
+                            <constraint firstItem="ugj-lQ-asF" firstAttribute="leading" secondItem="KDT-cV-eXp" secondAttribute="leading" constant="20" id="Qby-cU-rDq"/>
+                            <constraint firstItem="hs3-DA-aaw" firstAttribute="leading" secondItem="KDT-cV-eXp" secondAttribute="leading" id="gI0-1x-3VS"/>
+                            <constraint firstItem="ugj-lQ-asF" firstAttribute="centerY" secondItem="KDT-cV-eXp" secondAttribute="centerY" id="kgV-ag-7oG"/>
+                            <constraint firstItem="KDT-cV-eXp" firstAttribute="trailing" secondItem="ugj-lQ-asF" secondAttribute="trailing" constant="20" id="wDO-oG-xSn"/>
+                            <constraint firstItem="hs3-DA-aaw" firstAttribute="bottom" secondItem="KDT-cV-eXp" secondAttribute="bottom" id="ydf-CD-sMt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KDT-cV-eXp"/>
+                    </view>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="wmx-wg-wjG">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="gwO-bs-tOq"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="congratsImageView" destination="hs3-DA-aaw" id="lEI-gM-uOm"/>
+                        <outlet property="congratsLabel" destination="ugj-lQ-asF" id="dag-Gj-Jfq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNw-Up-5jg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="784.79999999999995" y="15.742128935532236"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qhv-fP-gIl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cwU-Iv-Cq1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="apI-EQ-CNc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ES9-dG-FIJ" kind="relationship" relationship="rootViewController" id="1Cq-h9-Cmp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ENR-1e-vZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-154.40000000000001" y="15.742128935532236"/>
+        </scene>
+    </scenes>
+</document>

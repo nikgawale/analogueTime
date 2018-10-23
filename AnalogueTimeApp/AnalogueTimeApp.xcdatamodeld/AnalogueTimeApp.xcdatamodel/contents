@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AppUsageInfo" representedClassName=".AppUsageInfo" syncable="YES">
+        <attribute name="totalUsageTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uploaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="DayAppUsage" representedClassName=".DayAppUsage" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalDayAppUsageTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uploaded" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AppUsageInfo" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="DayAppUsage" positionX="-63" positionY="0" width="128" height="90"/>
+    </elements>
 </model>
