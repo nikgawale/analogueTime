@@ -16,6 +16,7 @@ class CountVC: BaseVC {
     @IBOutlet weak var topLabel: UILabel!
     
     @IBOutlet weak var middleLabel: UILabel!
+    let audioPlayer = AudioPlayer()
     
     let countArrayFor5s = ["count_5s_5_img",
                            "count_5s_10_img",
@@ -63,10 +64,15 @@ class CountVC: BaseVC {
             let imageName = imageArray[currentIndex]
             countImage.image = UIImage(named:imageName)
             topLabel.text = getTextForTime(imageName)
+            self.audioPlayer.playAudio(audioName:topLabel.text! + ".wav")
+
+            
         } else {
             let imageName = imageArray[currentIndex]
             countImage.image = UIImage(named:imageName)
             topLabel.text = getTextForTime(imageName)
+            self.audioPlayer.playAudio(audioName:topLabel.text! + ".wav")
+
             currentIndex = currentIndex  + 1
         }
     }

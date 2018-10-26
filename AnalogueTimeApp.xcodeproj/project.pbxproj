@@ -75,6 +75,9 @@
 		BCCF226C216778DF0040C0BC /* TopStudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF226B216778DF0040C0BC /* TopStudentCell.swift */; };
 		BCF4C274215E88E500556FB1 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF4C273215E88E500556FB1 /* AboutUsVC.swift */; };
 		CD1AEB8A84F78C36EC80C1DE /* Pods_AnalogueTimeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2541EE945229A32EC8DE2B6 /* Pods_AnalogueTimeAppUITests.framework */; };
+		F19E83832183630600E9825F /* letsgo.wav in Resources */ = {isa = PBXBuildFile; fileRef = F19E83802183630600E9825F /* letsgo.wav */; };
+		F19E83842183630600E9825F /* to.wav in Resources */ = {isa = PBXBuildFile; fileRef = F19E83812183630600E9825F /* to.wav */; };
+		F19E83852183630600E9825F /* quarter.wav in Resources */ = {isa = PBXBuildFile; fileRef = F19E83822183630600E9825F /* quarter.wav */; };
 		F1A9D7073B0DCFFD51585F37 /* Pods_AnalogueTimeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F07832E98B94512D1453DB /* Pods_AnalogueTimeAppTests.framework */; };
 		F1D960B3216E6FBB00D38891 /* tg.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D95FEF216E6FBB00D38891 /* tg.png */; };
 		F1D960B4216E6FBB00D38891 /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D95FF0216E6FBB00D38891 /* me.png */; };
@@ -378,6 +381,9 @@
 		BCF4C273215E88E500556FB1 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		C2541EE945229A32EC8DE2B6 /* Pods_AnalogueTimeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnalogueTimeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BBD541172B969525892E7C /* Pods-AnalogueTimeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalogueTimeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnalogueTimeApp/Pods-AnalogueTimeApp.release.xcconfig"; sourceTree = "<group>"; };
+		F19E83802183630600E9825F /* letsgo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = letsgo.wav; sourceTree = "<group>"; };
+		F19E83812183630600E9825F /* to.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = to.wav; sourceTree = "<group>"; };
+		F19E83822183630600E9825F /* quarter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = quarter.wav; sourceTree = "<group>"; };
 		F1D95FEF216E6FBB00D38891 /* tg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tg.png; sourceTree = "<group>"; };
 		F1D95FF0216E6FBB00D38891 /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
 		F1D95FF1216E6FBB00D38891 /* la.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = la.png; sourceTree = "<group>"; };
@@ -657,6 +663,9 @@
 		BC5060C9217B413800E9DF4D /* audios */ = {
 			isa = PBXGroup;
 			children = (
+				F19E83802183630600E9825F /* letsgo.wav */,
+				F19E83822183630600E9825F /* quarter.wav */,
+				F19E83812183630600E9825F /* to.wav */,
 				BC5060CA217B413800E9DF4D /* 15.wav */,
 				BC5060CB217B413800E9DF4D /* thisis.wav */,
 				BC5060CC217B413800E9DF4D /* 10.wav */,
@@ -1181,6 +1190,7 @@
 				F1D960BA216E6FBB00D38891 /* af.png in Resources */,
 				F1D960FE216E6FBB00D38891 /* il.png in Resources */,
 				F1D9614E216E6FBB00D38891 /* ve.png in Resources */,
+				F19E83832183630600E9825F /* letsgo.wav in Resources */,
 				F1D96148216E6FBB00D38891 /* cf.png in Resources */,
 				BC506101217B413800E9DF4D /* 20.wav in Resources */,
 				F1D960C5216E6FBB00D38891 /* lu.png in Resources */,
@@ -1261,6 +1271,7 @@
 				F1D96152216E6FBB00D38891 /* lk.png in Resources */,
 				F1D96151216E6FBB00D38891 /* mx.png in Resources */,
 				F1D9614D216E6FBB00D38891 /* to.png in Resources */,
+				F19E83842183630600E9825F /* to.wav in Resources */,
 				F1D960D2216E6FBB00D38891 /* ua.png in Resources */,
 				F1D960E2216E6FBB00D38891 /* at.png in Resources */,
 				F1D960E3216E6FBB00D38891 /* by.png in Resources */,
@@ -1355,6 +1366,7 @@
 				F1D96159216E6FBC00D38891 /* ba.png in Resources */,
 				F1D96106216E6FBB00D38891 /* sg.png in Resources */,
 				BC5060FF217B413800E9DF4D /* 2.wav in Resources */,
+				F19E83852183630600E9825F /* quarter.wav in Resources */,
 				F1D96103216E6FBB00D38891 /* do.png in Resources */,
 				F1D960CE216E6FBB00D38891 /* lt.png in Resources */,
 				F1D960C0216E6FBB00D38891 /* md.png in Resources */,

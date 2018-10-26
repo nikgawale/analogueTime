@@ -22,7 +22,6 @@ class AudioPlayer: NSObject,AVAudioPlayerDelegate {
         
         if audioPlayer == nil || audioPlayer?.isPlaying == false
         {
-            
             do {
                 if let fileURL = Bundle.main.path(forResource:audioName, ofType:nil) {
                     audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL))
@@ -37,6 +36,14 @@ class AudioPlayer: NSObject,AVAudioPlayerDelegate {
             audioPlayer?.play()
         }
     }
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        
+        if audioList.count > 0
+        {
+            audioList.removeFirst()
+        }
+    }
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         audioList.removeFirst()
         if (!audioList.isEmpty)
@@ -44,7 +51,6 @@ class AudioPlayer: NSObject,AVAudioPlayerDelegate {
             let name = audioList.first!
             audioPlayer = nil
             print(name)
-            
             playAudio(audioName:name,add:false)
         }
     }

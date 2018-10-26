@@ -16,6 +16,8 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
     @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var clock: BEMAnalogClockView!
 
+    let audioPlayer = AudioPlayer()
+    
     let viewModel = ModeViewModel()
     var timer : Timer?
     var showInfoText = false
@@ -111,6 +113,64 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
             unownedSelf.timelabel.text = ""
             let cur_time_str = unownedSelf.level.getTimeStringFrom(hour, min)
             unownedSelf.bottomLabel.text = "Show me \(cur_time_str) o'clock"
+            
+            print("cur_time_str", cur_time_str)
+            
+            print("hour", hour)
+            
+            print("min", min)
+            
+            if hour > 0
+            {
+                self.audioPlayer.playAudio(audioName:"showme.wav")
+            }
+            if min > 0
+            {
+            switch min {
+            case 0: break
+             //   self.audioPlayer.playAudio(audioName:String(hour) + ".wav")
+            case 5:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            case 10:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            case 15:
+                self.audioPlayer.playAudio(audioName:"quarter.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            case 20:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            case 25:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            case 30:
+                self.audioPlayer.playAudio(audioName:"half.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            case 35:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"to.wav")
+            case 40:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"to.wav")
+            case 45:
+                self.audioPlayer.playAudio(audioName:"quarter.wav")
+                self.audioPlayer.playAudio(audioName:"to.wav")
+            case 50:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"to.wav")
+            case 55:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"to.wav")
+            default:
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+            }
+            }
+            if hour > 0
+            {
+                self.audioPlayer.playAudio(audioName:String(hour) + ".wav")
+                self.audioPlayer.playAudio(audioName:"oclock.wav")
+            }
             unownedSelf.expectedTime = (hour, min)
             unownedSelf.clock.updateTime(animated: true)
         }
@@ -118,6 +178,7 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
     func startDemoMode() {
         //Demo mode
         level.demoAllLevelExceptCombos = true
+        Timer.scheduledTimer(timeInterval:0.2, target: self, selector: #selector(self.playThisisAudio), userInfo: nil, repeats: false)
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         
         let levelStr = level.getLevels()[level.currentLevel].1
@@ -172,7 +233,13 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
         self.timelabel.text = "\(cur_time_str)"
         self.bottomLabel.text = "This is \(cur_time_str)"
         
+        self.audioPlayer.playAudio(audioName:cur_time_str + ".wav")
     }
+    
+    @objc func playThisisAudio() {
+        self.audioPlayer.playAudio(audioName:"thisis.wav")
+    }
+    
     @objc func showInfoScreen(_ text: String) {
         unowned let unownedSelf = self
         DispatchQueue.main.async {
@@ -187,12 +254,17 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
     func currentTime(onClock clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
         print("Hours = \(hours)")
         print("minutes = \(minutes)")
-        
+
         if viewModel.type == .WE_DRIVE {
             let correctMin =  (expectedTime.1 == Int(minutes)!) || (expectedTime.1 == Int(minutes)! - 1) || (expectedTime.1 == Int(minutes)! + 1)
             if ((expectedTime.0 == Int(hours)) && correctMin) {
                 print("Time is  correct")
                 isUserSelectedCorrectTime = true
+                self.audioPlayer.playAudio(audioName:hours + ".wav")
+                if  Int(minutes)! > 0
+                {
+                    self.audioPlayer.playAudio(audioName:minutes + ".wav")
+                }
             } else {
                 isUserSelectedCorrectTime = false
             }
@@ -207,6 +279,16 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
             }
             self.timelabel.text = "\(cur_time_str)"
             self.bottomLabel.text = "This is \(cur_time_str)"
+            
+            /*if (self.clock.minutes > 0)
+            {
+                self.audioPlayer.playAudio(audioName:String(self.clock.minutes) + ".wav")
+            }
+            if (self.clock.hours > 0)
+            {
+                self.audioPlayer.playAudio(audioName:String(self.clock.hours) + ".wav")
+                self.audioPlayer.playAudio(audioName:"oclock.wav")
+            }*/
             self.clock.allowFinger(toMoveClock: false)
             unowned let unownedSelf = self
             let deadlineTime = DispatchTime.now() + .seconds(delay)
@@ -245,6 +327,7 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
                 }
             } else {
                 self.bottomLabel.text = "Good Try"
+                self.audioPlayer.playAudio(audioName:"goodtry.wav")
                 weDriveClocks = weDriveClocks + 1
                 level.currentIndex = Int(arc4random_uniform(UInt32(11)))
                 level.demoAllLevelExceptCombos = true
