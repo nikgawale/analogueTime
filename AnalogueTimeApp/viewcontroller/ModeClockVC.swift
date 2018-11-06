@@ -271,6 +271,62 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
         }
     }
     
+    func playYouDriveAudio()
+    {
+        if self.clock.minutes > 0
+        {
+            let min = self.clock.minutes
+            if  min <= 12 {
+                self.audioPlayer.playAudio(audioName:String(min) + ".wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if  min > 12 && min <=  20  {
+                self.audioPlayer.playAudio(audioName:"15.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if  min > 20 && min <=  25  {
+                self.audioPlayer.playAudio(audioName:"25.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if  min > 25 && min <=  29  {
+                self.audioPlayer.playAudio(audioName:"half.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if min == 30
+            {
+                self.audioPlayer.playAudio(audioName:"half.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if  min > 30 && min <=  40  {
+                self.audioPlayer.playAudio(audioName:"35.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if  min > 40 && min <=  44  {
+                self.audioPlayer.playAudio(audioName:"45.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            if min == 45
+            {
+                self.audioPlayer.playAudio(audioName:"quarter.wav")
+                self.audioPlayer.playAudio(audioName:"to.wav")
+            }
+            else if  min > 45 && min <=  50  {
+                self.audioPlayer.playAudio(audioName:"50.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if  min > 50 && min <=  55  {
+                self.audioPlayer.playAudio(audioName:"55.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+            else if  min > 55 && min <=  50  {
+                self.audioPlayer.playAudio(audioName:"60.wav")
+                self.audioPlayer.playAudio(audioName:"past.wav")
+            }
+        }
+        self.audioPlayer.playAudio(audioName:String(self.clock.hours) + ".wav")
+        self.audioPlayer.playAudio(audioName:"oclock.wav")
+    }
+    
     func userPutsOfHisFingureOutOfClock() {
         if viewModel.type == .YOU_DRIVE {
             var cur_time_str = self.level.getTimeStringFrom(self.clock.hours, self.clock.minutes)
@@ -280,15 +336,10 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
             self.timelabel.text = "\(cur_time_str)"
             self.bottomLabel.text = "This is \(cur_time_str)"
             
-            /*if (self.clock.minutes > 0)
-            {
-                self.audioPlayer.playAudio(audioName:String(self.clock.minutes) + ".wav")
-            }
-            if (self.clock.hours > 0)
-            {
-                self.audioPlayer.playAudio(audioName:String(self.clock.hours) + ".wav")
-                self.audioPlayer.playAudio(audioName:"oclock.wav")
-            }*/
+            print("self.clock.minutes",self.clock.minutes)
+            print("self.clock.hours",self.clock.hours)
+            
+            playYouDriveAudio()
             self.clock.allowFinger(toMoveClock: false)
             unowned let unownedSelf = self
             let deadlineTime = DispatchTime.now() + .seconds(delay)
