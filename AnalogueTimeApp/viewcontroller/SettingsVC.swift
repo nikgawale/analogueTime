@@ -24,8 +24,22 @@ class SettingsVC: BaseVC,UITableViewDelegate,UITableViewDataSource {
         voiceControl.layer.borderColor = UIColor.gray.cgColor
         voiceControl.changeThumbColor(UIColor.red)
         voiceControl.allowChangeThumbWidth  = true
+        voiceControl.isFromSettingView = true
+        
+        let defaults = UserDefaults.standard
+        let value = defaults.integer(forKey: "isAudioOn")
+        
+        voiceControl.selectItemAt(index: value, animated: true)
     }
 
+    @IBAction func resetButtonAction(_ sender: Any) {
+    
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "isAudioOn")
+        defaults.synchronize()
+        voiceControl.selectItemAt(index: 0, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 1
     }

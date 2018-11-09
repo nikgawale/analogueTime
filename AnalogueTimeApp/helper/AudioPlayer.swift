@@ -15,25 +15,30 @@ class AudioPlayer: NSObject,AVAudioPlayerDelegate {
     
     func playAudio(audioName:String,add:Bool = true)
     {
+        let defaults = UserDefaults.standard
+        let value = defaults.integer(forKey: "isAudioOn")
         
-        if add {
-            audioList.append(audioName)
-        }
-        
-        if audioPlayer == nil || audioPlayer?.isPlaying == false
+        if value == 0
         {
-            do {
-                if let fileURL = Bundle.main.path(forResource:audioName, ofType:nil) {
-                    audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL))
-                    audioPlayer?.delegate = self
-                } else {
-                    print("No file with specified name exists")
-                }
-            } catch let error {
-                print("Can't play the audio file failed with an error \(error.localizedDescription)")
+            if add {
+                audioList.append(audioName)
             }
             
-            audioPlayer?.play()
+            if audioPlayer == nil || audioPlayer?.isPlaying == false
+            {
+                do {
+                    if let fileURL = Bundle.main.path(forResource:audioName, ofType:nil) {
+                        audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL))
+                        audioPlayer?.delegate = self
+                    } else {
+                        print("No file with specified name exists")
+                    }
+                } catch let error {
+                    print("Can't play the audio file failed with an error \(error.localizedDescription)")
+                }
+                
+                audioPlayer?.play()
+            }
         }
     }
     

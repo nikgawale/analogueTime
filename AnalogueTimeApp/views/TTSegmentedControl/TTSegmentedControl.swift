@@ -59,6 +59,7 @@ open class TTSegmentedControl: UIView {
     fileprivate(set) var isDragging = false
     open var allowDrag = true
     open var allowChangeThumbWidth = true
+    open var isFromSettingView = false
     
     fileprivate var containerView = UIView()
     fileprivate var thumbContainerView = UIView()
@@ -431,6 +432,20 @@ extension TTSegmentedControl {
         let index = label.tag
         let title = label.text
         self.currentSelectedIndex = index
+        
+        if self.isFromSettingView == true
+        {
+            let defaults = UserDefaults.standard
+            
+            /*if  index == 0 {
+                defaults.set(false, forKey: "isAudioOn")
+            }
+            else {
+                defaults.set(index, forKey: "isAudioOn")
+            }*/
+            defaults.set(index, forKey: "isAudioOn")
+            defaults.synchronize()
+        }
         
         didSelectItemWith?(index, title)
         if title == nil {

@@ -506,6 +506,8 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                         let deadlineTime = DispatchTime.now() + .seconds(delay)
                         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                             unownedSelf.ThisIs(hour: unownedSelf.expectedTime.0, min: unownedSelf.expectedTime.1)
+                            self.audioPlayer.playAudio(audioName:"oclock.wav")
+
                             let deadlineTime = DispatchTime.now() + .seconds(self.delay)
                             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                                 

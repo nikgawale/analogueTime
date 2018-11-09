@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iF-iT-A9Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5iF-iT-A9Y">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -684,7 +684,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-f6-A06">
-                                <rect key="frame" x="69" y="249" width="276" height="259"/>
+                                <rect key="frame" x="69" y="248.66666666666663" width="276" height="259"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you learnt analogue time before?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kk-iB-4ge">
                                         <rect key="frame" x="0.0" y="0.0" width="276" height="162"/>
@@ -696,10 +696,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="xUl-tX-Dz3">
-                                        <rect key="frame" x="0.0" y="212" width="276" height="47"/>
+                                        <rect key="frame" x="0.0" y="212.00000000000003" width="276" height="46.999999999999972"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sA-qN-gPc">
-                                                <rect key="frame" x="0.0" y="0.33333333333331439" width="108.66666666666667" height="47"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="108.66666666666667" height="47"/>
                                                 <color key="backgroundColor" red="0.4039215686" green="0.72549019609999998" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                                 <state key="normal" title="NO">
@@ -715,7 +715,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpf-er-3ad">
-                                                <rect key="frame" x="167.66666666666666" y="0.33333333333331439" width="108.33333333333334" height="47"/>
+                                                <rect key="frame" x="167.66666666666666" y="0.0" width="108.33333333333334" height="47"/>
                                                 <color key="backgroundColor" red="0.8901960784313725" green="0.0" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                                 <state key="normal" title="YES">
@@ -1176,6 +1176,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="experincedUserAction:" destination="9OZ-B1-GYu" eventType="touchUpInside" id="9Tk-y4-RRf"/>
+                                    <action selector="resetButtonAction:" destination="gXT-3k-nQh" eventType="touchUpInside" id="dGO-38-72b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1296,7 +1297,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="64.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempflag" translatesAutoresizingMaskIntoConstraints="NO" id="1mB-1d-CFE">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tempflag" translatesAutoresizingMaskIntoConstraints="NO" id="1mB-1d-CFE">
                                                     <rect key="frame" x="20" y="9.9999999999999964" width="61" height="44.666666666666657"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="61" id="QYA-GZ-ZXp"/>
