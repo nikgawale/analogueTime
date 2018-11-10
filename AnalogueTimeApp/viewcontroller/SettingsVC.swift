@@ -46,7 +46,7 @@ class SettingsVC: BaseVC,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsVCCell", for: indexPath)
-        cell.textLabel?.text = "Update Student Info"
+        cell.textLabel?.text = "Update"
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.textAlignment = .center
         return cell

@@ -65,7 +65,7 @@ class CountVC: BaseVC {
             countImage.image = UIImage(named:imageName)
             topLabel.text = getTextForTime(imageName)
             self.audioPlayer.playAudio(audioName:topLabel.text! + ".wav")
-
+            currentIndex = currentIndex  + 1
             
         } else {
             let imageName = imageArray[currentIndex]

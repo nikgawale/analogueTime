@@ -20,7 +20,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
     
     @IBOutlet weak var clock: BEMAnalogClockView!
     
-    let delay = 1
+    let delay = 4.0
     let level = LevelManger()
     var timer : Timer?
     var countDowntimer : Timer?
@@ -102,8 +102,8 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         //Demo mode
         numberOftries = 1
         levelErrors = 0
-        Timer.scheduledTimer(timeInterval:0.2, target: self, selector: #selector(self.playThisisAudio), userInfo: nil, repeats: false)
-        timer = Timer.scheduledTimer(timeInterval: TimeInterval(delay), target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        //Timer.scheduledTimer(timeInterval:0.2, target: self, selector: #selector(self.playThisisAudio), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval:delay, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     
         let levelStr = level.getLevels()[level.currentLevel].1
         
@@ -147,7 +147,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         let h = level.getLevels()[level.currentLevel].0[level.currentIndex].0
         let m = level.getLevels()[level.currentLevel].0[level.currentIndex].1
         unowned let unownedSelf = self
-        let deadlineTime = DispatchTime.now() + .seconds(delay)
+        let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             unownedSelf.showMe(hour: h, min: m)
         })
@@ -164,7 +164,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         self.levelLabel.text = "Level - \(levelStr) - Random"
 
         let (h,m) = level.getRandomTimeInLevel(level.currentLevel)
-        let deadlineTime = DispatchTime.now() + .seconds(delay)
+        let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
         unowned let unownedSelf = self
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             unownedSelf.showMe(hour: h, min: m)
@@ -192,8 +192,10 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         self.clock.updateTime(animated: true)
         let cur_time_str = self.level.getTimeStringFrom(self.clock.hours, self.clock.minutes)
         self.timelabel.text = "\(cur_time_str)"
-        self.bottomLabel.text = "This is \(cur_time_str)"
+        self.bottomLabel.text = "This is \(cur_time_str) o'clock"
+        self.playThisisAudio()
         self.audioPlayer.playAudio(audioName:cur_time_str + ".wav")
+        self.audioPlayer.playAudio(audioName:"oclock.wav")
 
     }
     
@@ -364,7 +366,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                     level.currentMode = .Demo
                     level.currentIndex = 0
 
-                    let deadlineTime = DispatchTime.now() + .seconds(delay)
+                    let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
                     unowned let unownedSelf = self
                     DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                         unownedSelf.startDemoMode()
@@ -483,7 +485,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                             showInfoScreen("Lets check the demo")
                             level.currentMode = .Demo
                             level.currentIndex = 0
-                            let deadlineTime = DispatchTime.now() + .seconds(delay)
+                            let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
                             unowned let unownedSelf = self
                             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                                 unownedSelf.startDemoMode()
@@ -492,7 +494,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                             showInfoScreen("Lets check the Use mode")
                             level.currentMode = .Use
                             level.currentIndex = 0
-                            let deadlineTime = DispatchTime.now() + .seconds(delay)
+                            let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
                             unowned let unownedSelf = self
                             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                                 unownedSelf.startUseMode()
@@ -503,12 +505,12 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                         return
                     } else {
                         unowned let unownedSelf = self
-                        let deadlineTime = DispatchTime.now() + .seconds(delay)
+                        let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
                         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                             unownedSelf.ThisIs(hour: unownedSelf.expectedTime.0, min: unownedSelf.expectedTime.1)
                             self.audioPlayer.playAudio(audioName:"oclock.wav")
 
-                            let deadlineTime = DispatchTime.now() + .seconds(self.delay)
+                            let deadlineTime = DispatchTime.now() + .seconds(Int(self.delay))
                             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                                 
                                 let limit_h = unownedSelf.level.getLevels()[unownedSelf.level.currentLevel].0.last?.0
@@ -531,7 +533,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                         self.levelErrors = self.levelErrors + 1
                     }
                     unowned let unownedSelf = self
-                    let deadlineTime = DispatchTime.now() + .seconds(delay)
+                    let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
                     DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                         unownedSelf.numberOftries = unownedSelf.numberOftries + 1
                         unownedSelf.showMe(hour: unownedSelf.expectedTime.0, min: unownedSelf.expectedTime.1)

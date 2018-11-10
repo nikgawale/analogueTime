@@ -97,7 +97,7 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
         
         if updateUserInfo {
             
-            topLabel.text = "UPDATE STUDENT INFO"
+            topLabel.text = "UPDATE"
             registerBtn.setTitle("UPDATE", for: .normal)
         } else {
             topLabel.text = "REGISTER"

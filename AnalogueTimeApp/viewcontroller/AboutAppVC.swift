@@ -28,8 +28,9 @@ class AboutAppVC: BaseVC,UITableViewDelegate,UITableViewDataSource {
         } else if indexPath.row == 1 {
             cell.textLabel?.text = "Elly’s training"
         } else if indexPath.row == 2 {
-            cell.textLabel?.text = "About Us"
+            cell.textLabel?.text = "About us"
         }
+        cell.textLabel?.textAlignment = .center
         return cell
     }
     

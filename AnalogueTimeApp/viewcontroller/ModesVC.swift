@@ -26,7 +26,6 @@ class ModesVC: BaseVC {
     
     @IBAction func startAction(_ sender: Any) {
         print("selcted = \(control.currentIndex)")
-        control.selectItemAt(index: 0, animated: true)
         
         switch control.currentIndex {
         case 0:

@@ -19,7 +19,7 @@ class BaseVC: UIViewController {
         floaty.contentMode = .scaleAspectFit
         floaty.tintColor = UIColor.white
         floaty.itemTitleColor = UIColor.white
-        floaty.buttonColor = UIColor(red: 46/255, green: 146/255, blue: 4/255, alpha: 0.5)
+        floaty.buttonColor = UIColor(red: 46/255, green: 146/255, blue: 4/255, alpha: 1.0)
         floaty.hasShadow = false
         
         
