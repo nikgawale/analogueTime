@@ -237,7 +237,7 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
     }
     
     @objc func playThisisAudio() {
-        self.audioPlayer.playAudio(audioName:"thisis.wav")
+       // self.audioPlayer.playAudio(audioName:"thisis.wav")
     }
     
     @objc func showInfoScreen(_ text: String) {
@@ -273,6 +273,8 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
     
     func playYouDriveAudio()
     {
+        self.audioPlayer.playAudio(audioName:"thisis.wav")
+
         if self.clock.minutes > 0
         {
             let min = self.clock.minutes
@@ -281,7 +283,7 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
                 self.audioPlayer.playAudio(audioName:"past.wav")
             }
             else if  min > 12 && min <=  20  {
-                self.audioPlayer.playAudio(audioName:"15.wav")
+                self.audioPlayer.playAudio(audioName:"quarter.wav")
                 self.audioPlayer.playAudio(audioName:"past.wav")
             }
             else if  min > 20 && min <=  25  {
