@@ -232,8 +232,8 @@ class ModeClockVC: BaseVC,BEMAnalogClockDelegate {
         var cur_time_str = self.level.getTimeStringFrom(self.clock.hours, self.clock.minutes)
         self.timelabel.text = "\(cur_time_str)"
         self.bottomLabel.text = "This is \(cur_time_str)"
-        
-        self.audioPlayer.playAudio(audioName:cur_time_str + ".wav")
+        playYouDriveAudio()
+       // self.audioPlayer.playAudio(audioName:cur_time_str + ".wav")
     }
     
     @objc func playThisisAudio() {
