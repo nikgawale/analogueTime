@@ -99,6 +99,14 @@ class RegisterVC: UIViewController,UITextFieldDelegate {
             
             topLabel.text = "UPDATE"
             registerBtn.setTitle("UPDATE", for: .normal)
+            
+            let name = DataManager.sharedManager.getUser()?.name
+            let email = DataManager.sharedManager.getUser()?.email
+            let country = DataManager.sharedManager.getUser()?.country
+
+            self.studentNameTextField.text = name
+            self.studentEmailTextField.text = email
+            self.countryTextField.text = country
         } else {
             topLabel.text = "REGISTER"
             registerBtn.setTitle("REGISTER", for: .normal)

@@ -48,7 +48,13 @@ class TopStudentVC: BaseVC,UITableViewDelegate,UITableViewDataSource {
                 self.users.append(user)
                 
             }
-
+            
+            self.users = self.users.sorted(by: { (user1, user2) -> Bool in
+                let x = Int(user1.correctAns)!
+                let y = Int(user2.correctAns)!
+                return x > y
+            })
+            
             print("self.users = \(self.users)")
             DispatchQueue.main.async {
                 self.loder.dismiss()

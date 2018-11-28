@@ -259,4 +259,65 @@ class LevelManger {
         
         return 0
     }
+    
+    func audioPlayList (_ timeStr:String) -> [String] {
+        
+        var playList = [String]()
+        
+        if timeStr.lowercased().contains("5 to") {
+            playList.append("5")
+            playList.append("to")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("10 to") {
+            playList.append("10")
+            playList.append("to")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("quarter to") {
+            playList.append("quarter")
+            playList.append("to")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("20 past") {
+            playList.append("20")
+            playList.append("past")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("25 past") {
+            playList.append("25")
+            playList.append("past")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("25 to") {
+            playList.append("25")
+            playList.append("to")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("20 to") {
+            playList.append("20")
+            playList.append("to")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("10 past") {
+            playList.append("10")
+            playList.append("past")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("5 past") {
+            playList.append("5")
+            playList.append("past")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else if timeStr.lowercased().contains("half past") {
+            playList.append("half")
+            playList.append("past")
+            let digit = timeStr.split(separator: " ").last!
+            playList.append(String(digit))
+        } else {
+            playList.append(timeStr)
+        }
+        
+        return playList
+    }
 }

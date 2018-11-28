@@ -25,8 +25,8 @@
                   symbolName = "AnalougeAp.YourStatsVC.viewWillAppear(Swift.Bool) -&gt; ()"
                   moduleName = "AnalogueTimeApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pravinga/Downloads/analogueTime-master%202/AnalogueTimeApp/viewcontroller/YourStatsVC.swift"
-                  timestampString = "563546767.050563"
+                  urlString = "file:///Users/pravinga/Downloads/analogueTime-master%206/AnalogueTimeApp/viewcontroller/YourStatsVC.swift"
+                  timestampString = "565085475.343473"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -40,8 +40,8 @@
                   symbolName = "function signature specialization &lt;Arg[3] = Value Promoted from Box&gt; of closure #3 (Swift.Bool) -&gt; () in AnalougeAp.YourStatsVC.viewWillAppear(Swift.Bool) -&gt; ()"
                   moduleName = "AnalogueTimeApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pravinga/Downloads/analogueTime-master%202/AnalogueTimeApp/viewcontroller/YourStatsVC.swift"
-                  timestampString = "563546767.053556"
+                  urlString = "file:///Users/pravinga/Downloads/analogueTime-master%206/AnalogueTimeApp/viewcontroller/YourStatsVC.swift"
+                  timestampString = "565085475.3457071"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "73"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnalogueTimeApp/viewcontroller/TopStudentVC.swift"
-            timestampString = "561132346.791873"
+            timestampString = "565086885.670945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
-            timestampString = "563549481.916842"
+            timestampString = "565086885.671025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "startDemoMode()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnalogueTimeApp/viewcontroller/CountVC.swift"
-            timestampString = "563547532.349545"
+            timestampString = "565086885.67142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
-            timestampString = "563549481.9169329"
+            timestampString = "565086885.671484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "startDemoMode()"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,12 +186,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AnalogueTimeApp/viewcontroller/CountVC.swift"
-            timestampString = "563547532.349636"
+            timestampString = "565086885.671721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
             endingLineNumber = "61"
             landmarkName = "runTimedCode()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
+            timestampString = "565086885.671836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "ThisIs(hour:min:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
+            timestampString = "565086885.672076"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "showInfoScreen(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnalougeAp.ClockVC.showInfoScreen(Swift.String) -&gt; ()"
+                  moduleName = "AnalogueTimeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pravinga/Downloads/analogueTime-master%206/AnalogueTimeApp/viewcontroller/ClockVC.swift"
+                  timestampString = "565085475.388883"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "264"
+                  endingLineNumber = "264"
+                  offsetFromSymbolStart = "93">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in AnalougeAp.ClockVC.showInfoScreen(Swift.String) -&gt; ()"
+                  moduleName = "AnalogueTimeApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pravinga/Downloads/analogueTime-master%206/AnalogueTimeApp/viewcontroller/ClockVC.swift"
+                  timestampString = "565085475.390884"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "264"
+                  endingLineNumber = "264"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
+            timestampString = "565086885.672338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "515"
+            endingLineNumber = "515"
+            landmarkName = "userPutsOfHisFingureOutOfClock()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
+            timestampString = "565086885.672577"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
+            landmarkName = "userPutsOfHisFingureOutOfClock()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
+            timestampString = "565086885.672798"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
+            landmarkName = "userPutsOfHisFingureOutOfClock()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnalogueTimeApp/viewcontroller/ClockVC.swift"
+            timestampString = "565086885.673013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
+            landmarkName = "userPutsOfHisFingureOutOfClock()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,21 +13,27 @@ import Firebase
 let kCongratsScreenTime = 600
 
 class ClockVC: BaseVC,BEMAnalogClockDelegate {
-    @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var timelabel: UILabel!
     @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
     
+    @IBOutlet weak var tick: UIImageView!
     @IBOutlet weak var clock: BEMAnalogClockView!
     
-    let delay = 4.0
+    @IBOutlet weak var levelValue: UILabel!
+    @IBOutlet weak var modeValue: UILabel!
+
+    let delay = 6.0
     let level = LevelManger()
     var timer : Timer?
     var countDowntimer : Timer?
     var screenSpentTimer : Timer?
     var expectedTime = (0,0)
     var showInfoText = false
-    var isUserSelectedCorrectTime = false
+    var isUserSelectedCorrectTime = false {
+        didSet {
+        }
+    }
     var numberOftries = 1
     var levelErrors = 0
     let audioPlayer = AudioPlayer()
@@ -56,20 +62,10 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         self.clock.isHidden = true
         self.timelabel.isHidden = true
         self.bottomLabel.isHidden = true
+        self.tick.isHidden = true
 
 
-
-        //Need to remove this screen
-        
-        if level.isExperienced {
-            
-            startUseMode()
-        } else {
-            let user = DataManager.sharedManager.getUser()
-            let levelStr = user?.level
-            level.currentLevel = level.getLevelIndex(levelStr!)
-            startDemoMode()
-        }
+  
         //Use mode
        // showInfoScreen()
         
@@ -124,7 +120,10 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                 
             })
         }
-        self.levelLabel.text = "Level - \(levelStr) - Demo"
+        self.levelValue.text  = levelStr
+        self.modeValue.text  = "Learn"
+
+        //self.levelLabel.text = "Level - \(levelStr) - Demo"
     }
     
     @objc func playThisisAudio() {
@@ -142,7 +141,10 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         self.level.currentMode = LevelMode.Use
 
         let levelStr = level.getLevels()[level.currentLevel].1
-        self.levelLabel.text = "Level - \(levelStr) - Use"
+        self.levelValue.text  = levelStr
+        self.modeValue.text  = "Use"
+
+        //self.levelLabel.text = "Level - \(levelStr) - Use"
 
         let h = level.getLevels()[level.currentLevel].0[level.currentIndex].0
         let m = level.getLevels()[level.currentLevel].0[level.currentIndex].1
@@ -161,7 +163,10 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         numberOftries = 1
         levelErrors = 0
         let levelStr = level.getLevels()[level.currentLevel].1
-        self.levelLabel.text = "Level - \(levelStr) - Random"
+        self.levelValue.text  = levelStr
+        self.modeValue.text  = "Use"
+
+        //self.levelLabel.text = "Level - \(levelStr) - Random"
 
         let (h,m) = level.getRandomTimeInLevel(level.currentLevel)
         let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
@@ -172,6 +177,9 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
     }
     
     func ThisIs(hour: Int , min:Int) {
+        
+        self.audioPlayer.audioList.removeAll()
+        self.audioPlayer.audioPlayer?.stop()
         
         self.showInfoText = false
         self.middleLabel.isHidden = true
@@ -194,13 +202,25 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         self.timelabel.text = "\(cur_time_str)"
         self.bottomLabel.text = "This is \(cur_time_str) o'clock"
         self.playThisisAudio()
-        self.audioPlayer.playAudio(audioName:cur_time_str + ".wav")
-        self.audioPlayer.playAudio(audioName:"oclock.wav")
+        
+        level.audioPlayList(cur_time_str).forEach { (str) in
+            self.audioPlayer.playAudio(audioName:str + ".wav")
+        }
+        
+
+       // self.audioPlayer.playAudio(audioName:"oclock.wav")
 
     }
     
     
     func showMe(hour: Int , min:Int) {
+        self.audioPlayer.audioList.removeAll()
+        self.audioPlayer.audioPlayer?.stop()
+    
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            self.tick.isHidden = true
+        }
+        
         unowned let unownedSelf = self
         DispatchQueue.main.async {
             unownedSelf.clock.allowFinger(toMoveClock: true)
@@ -215,8 +235,10 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
             let cur_time_str = unownedSelf.level.getTimeStringFrom(hour, min)
             unownedSelf.bottomLabel.text = "Show me \(cur_time_str) o'clock"
             self.audioPlayer.playAudio(audioName:"showme.wav")
-            self.audioPlayer.playAudio(audioName:cur_time_str + ".wav")
-            self.audioPlayer.playAudio(audioName:"oclock.wav")
+            unownedSelf.level.audioPlayList(cur_time_str).forEach { (str) in
+                self.audioPlayer.playAudio(audioName:str + ".wav")
+            }
+            //self.audioPlayer.playAudio(audioName:"oclock.wav")
             unownedSelf.expectedTime = (hour, min)
             unownedSelf.clock.updateTime(animated: true)
         }
@@ -251,6 +273,18 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //Need to remove this screen
+        
+        if level.isExperienced {
+            
+            startUseMode()
+        } else {
+            let user = DataManager.sharedManager.getUser()
+            let levelStr = user?.level
+            level.currentLevel = level.getLevelIndex(levelStr!)
+            startDemoMode()
+        }
+        
         countDowntimer = Timer.scheduledTimer(timeInterval: TimeInterval(10), target: self, selector: #selector(countDownTimerAction), userInfo: nil, repeats: true)
         
         let appdelegate  = UIApplication.shared.delegate as! AppDelegate
@@ -325,7 +359,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
         print("Hours = \(hours)")
         print("minutes = \(minutes)")
         
-        let correctMin =  (expectedTime.1 == Int(minutes)!) || (expectedTime.1 == Int(minutes)! - 1) || (expectedTime.1 == Int(minutes)! + 1)
+        let correctMin =  (expectedTime.1 == Int(minutes)!) || (expectedTime.1 == Int(minutes)! - 1) || (expectedTime.1 == Int(minutes)! + 1) || (expectedTime.1 == Int(minutes)! - 2) || (expectedTime.1 == Int(minutes)! + 2) || (expectedTime.1 == 59) || (expectedTime.1 == 58)
         
         if ((expectedTime.0 == Int(hours)) && correctMin) {
             print("Time is  correct")
@@ -447,9 +481,15 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                         }
                         
                     } else {
+                        
+                        self.clock.hours = self.expectedTime.0
+                        self.clock.minutes = self.expectedTime.1
+
                         level.currentIndex = level.currentIndex + 1
                         let (h,m) = level.getRandomTimeInLevel(level.currentLevel)
                         showMe(hour: h , min: m)
+                        self.tick.isHidden = false
+                        self.audioPlayer.playAudio(audioName:"ding.wav")
                     }
                     return
                 }
@@ -460,6 +500,10 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                 if (self.clock.hours == limit_h) && (self.clock.minutes == limit_m) {
                     startRandomMode()
                 } else {
+                    
+                    self.clock.hours = self.expectedTime.0
+                    self.clock.minutes = self.expectedTime.1
+
                     level.currentIndex = level.currentIndex + 1
                     
                     print("New Level = \(level.currentLevel)")
@@ -467,6 +511,8 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                     let h = level.getLevels()[level.currentLevel].0[level.currentIndex].0
                     let m = level.getLevels()[level.currentLevel].0[level.currentIndex].1
                     showMe(hour: h , min: m)
+                    self.tick.isHidden = false
+                    self.audioPlayer.playAudio(audioName:"ding.wav")
                 }
                 
             } else {
@@ -508,7 +554,7 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
                         let deadlineTime = DispatchTime.now() + .seconds(Int(delay))
                         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
                             unownedSelf.ThisIs(hour: unownedSelf.expectedTime.0, min: unownedSelf.expectedTime.1)
-                            self.audioPlayer.playAudio(audioName:"oclock.wav")
+                           // self.audioPlayer.playAudio(audioName:"oclock.wav")
 
                             let deadlineTime = DispatchTime.now() + .seconds(Int(self.delay))
                             DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
@@ -543,6 +589,8 @@ class ClockVC: BaseVC,BEMAnalogClockDelegate {
             }
 
         }
+       
+
     }
     
 }
